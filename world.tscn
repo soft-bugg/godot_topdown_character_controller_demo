@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://crtj25jim8lvj"]
+
+[ext_resource type="Script" path="res://character.gd" id="1_kdu40"]
+[ext_resource type="Texture2D" uid="uid://5upleb2bf0ds" path="res://icon.svg" id="1_tv1pe"]
+[ext_resource type="Script" path="res://keyboard_shower.gd" id="2_3d5rl"]
+[ext_resource type="Texture2D" uid="uid://traxqdtqcj5m" path="res://assets/a.png" id="3_6k0ri"]
+[ext_resource type="Texture2D" uid="uid://kgsuu0abltwm" path="res://assets/d.png" id="4_71jn6"]
+[ext_resource type="Texture2D" uid="uid://ba0um1ja3xeot" path="res://assets/w.png" id="5_2otdu"]
+[ext_resource type="Texture2D" uid="uid://bp1kfovl0aint" path="res://assets/s.png" id="6_3yy62"]
+[ext_resource type="Script" path="res://raw_input_label.gd" id="8_j4rjb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xrlou"]
+font_size = 32
+
+[node name="World" type="Node2D"]
+
+[node name="Character" type="CharacterBody2D" parent="."]
+script = ExtResource("1_kdu40")
+
+[node name="Sprite2D" type="Sprite2D" parent="Character"]
+position = Vector2(969, 488)
+texture = ExtResource("1_tv1pe")
+
+[node name="KeyboardShower" type="Node2D" parent="."]
+position = Vector2(179, 129)
+script = ExtResource("2_3d5rl")
+
+[node name="Up" type="Sprite2D" parent="KeyboardShower"]
+position = Vector2(-10, -63)
+scale = Vector2(0.611732, 0.611732)
+texture = ExtResource("5_2otdu")
+
+[node name="Right" type="Sprite2D" parent="KeyboardShower"]
+position = Vector2(90.75, 22.3614)
+scale = Vector2(0.641026, 0.641026)
+texture = ExtResource("4_71jn6")
+
+[node name="Left" type="Sprite2D" parent="KeyboardShower"]
+position = Vector2(-114, 33)
+scale = Vector2(0.590361, 0.590361)
+texture = ExtResource("3_6k0ri")
+
+[node name="Down" type="Sprite2D" parent="KeyboardShower"]
+position = Vector2(-14.25, 32.3614)
+scale = Vector2(0.563291, 0.563291)
+texture = ExtResource("6_3yy62")
+
+[node name="RawInputLabel" type="Label" parent="." node_paths=PackedStringArray("character")]
+offset_left = 338.0
+offset_top = 35.0
+offset_right = 945.0
+offset_bottom = 97.0
+text = "input_stack: []"
+label_settings = SubResource("LabelSettings_xrlou")
+script = ExtResource("8_j4rjb")
+character = NodePath("../Character")
